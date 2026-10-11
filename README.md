@@ -1,190 +1,239 @@
-🚀 RAG Projects — From Basic RAG to Conversational Memory
+<div align="center">
 
-A hands-on Python project exploring document-based question answering, interactive RAG, query rewriting, and session-based chat history.
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,14,18,24&height=240&section=header&text=RAG%20Projects&fontSize=72&fontColor=ffffff&animation=fadeIn&fontAlignY=36&desc=From%20Basic%20RAG%20to%20Conversational%20Memory&descSize=22&descAlignY=58" alt="RAG Projects banner" width="100%" />
 
-📌 Table of Contents
+<a href="https://git.io/typing-svg">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=24&pause=1000&color=36BCF7&center=true&vCenter=true&width=800&lines=Learning+Retrieval-Augmented+Generation;Building+RAG+with+Python+%2B+LangChain;Running+LLMs+locally+with+Ollama;Exploring+Query+Rewriting;Understanding+Session-Based+Chat+History" alt="Typing SVG" />
+</a>
 
-📖 About the Project
-🎯 Project Objectives
-🧰 Technologies Used
-✨ Project Features
-📂 Project Structure
-🏗️ Project Architecture
-🧩 The Four Implementations
-⚙️ Installation and Setup
-▶️ How to Run
-💬 Example Interaction
-🧠 Understanding the Concepts
-⚠️ Current Limitations
-🔮 Future Improvements
-👨‍💻 Author
+<br/>
 
-📖 About the Project
-This repository contains four Python implementations developed while learning Retrieval-Augmented Generation (RAG) and conversational applications using LangChain and Ollama.
-The project starts with a basic document-question-answering pipeline and gradually explores additional capabilities, including interactive question answering, query rewriting using conversation history, and session-based chat history management.
-Instead of relying entirely on a language model's existing knowledge, the RAG implementations retrieve relevant text chunks from a PDF document and provide that content as context to the model.
-The session-history implementation explores how messages can be maintained separately for different conversation sessions.
-💡 What does this project do?
+<p>
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
+  <img src="https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white" alt="LangChain" />
+  <img src="https://img.shields.io/badge/Ollama-000000?style=for-the-badge&logo=ollama&logoColor=white" alt="Ollama" />
+  <img src="https://img.shields.io/badge/ChromaDB-Vector_Store-6C4AB6?style=for-the-badge" alt="ChromaDB" />
+  <img src="https://img.shields.io/badge/Status-Learning_Project-2EA44F?style=for-the-badge" alt="Status" />
+</p>
 
-📄 Loads content from a PDF document.
-✂️ Splits document content into smaller text chunks.
-🧬 Generates embeddings for document chunks.
-🗄️ Stores document representations in a Chroma vector store.
-🔍 Retrieves relevant document chunks for a question.
-🤖 Uses an Ollama language model to generate a response.
-🔄 Supports repeated question answering in an interactive program.
-🧠 Experiments with rewriting questions using conversation history.
-💬 Demonstrates session-based message history.
+<p>
+  <img src="https://img.shields.io/badge/Implementations-4-36BCF7?style=flat-square" alt="4 implementations" />
+  <img src="https://img.shields.io/badge/Runs-100%25_Local-orange?style=flat-square" alt="Local" />
+  <img src="https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square" alt="PRs welcome" />
+  <img src="https://img.shields.io/badge/Made_with-❤️-red?style=flat-square" alt="Made with love" />
+</p>
 
-🎯 Project Objectives
-The primary objective is to understand how individual RAG components work together and how additional functionality can be built on top of a basic retrieval pipeline.
+<p>
+  <b>A hands-on Python project exploring document-based question answering,<br/>
+  interactive RAG, query rewriting, and session-based chat history.</b>
+</p>
 
-Objective
-Description
+<p>
+  <a href="#-about-the-project">About</a> •
+  <a href="#-the-four-implementations">Implementations</a> •
+  <a href="#-project-architecture">Architecture</a> •
+  <a href="#%EF%B8%8F-installation-and-setup">Setup</a> •
+  <a href="#%EF%B8%8F-how-to-run">Run</a> •
+  <a href="#-future-improvements">Roadmap</a>
+</p>
 
-📄 Document loading
-Read PDF content using a document loader.
+</div>
 
-✂️ Text splitting
-Divide documents into smaller chunks for retrieval.
+---
 
-🧬 Embeddings
-Convert text into vector representations.
+## 📌 Table of Contents
 
-🗄️ Vector storage
-Store and retrieve document representations using Chroma.
+<details open>
+<summary><b>Click to expand / collapse</b></summary>
 
-🔍 Retrieval
-Find relevant chunks for a user's question.
+- [📖 About the Project](#-about-the-project)
+- [🎯 Project Objectives](#-project-objectives)
+- [🧰 Technologies Used](#-technologies-used)
+- [✨ Project Features](#-project-features)
+- [📂 Project Structure](#-project-structure)
+- [🏗️ Project Architecture](#️-project-architecture)
+- [🧩 The Four Implementations](#-the-four-implementations)
+- [⚙️ Installation and Setup](#️-installation-and-setup)
+- [▶️ How to Run](#️-how-to-run)
+- [💬 Example Interaction](#-example-interaction)
+- [🧠 Understanding the Concepts](#-understanding-the-concepts)
+- [⚠️ Current Limitations](#️-current-limitations)
+- [🔮 Future Improvements](#-future-improvements)
+- [👨‍💻 Author](#-author)
 
-🤖 Answer generation
-Generate responses using retrieved context.
+</details>
 
-🔄 Interactive RAG
-Ask multiple questions in one running program.
+---
 
-📝 Query rewriting
-Rewrite a follow-up question using previous conversation messages.
+## 📖 About the Project
 
-💬 Session history
-Maintain separate in-memory message histories by session ID.
+This repository contains **four Python implementations** built while learning **Retrieval-Augmented Generation (RAG)** and conversational applications using **LangChain** and **Ollama**.
 
-🧰 Technologies Used
-The following technologies and libraries are used in the implementations.
+It starts with a basic document-question-answering pipeline and gradually adds interactive question answering, query rewriting using conversation history, and session-based chat history management.
 
-Technology
-Purpose in this project
+Instead of relying entirely on a language model's built-in knowledge, the RAG implementations **retrieve relevant text chunks from a PDF** and give that content to the model as context.
 
-Python
-Implements the application logic and connects the RAG components.
+### 💡 What does this project do?
 
-LangChain
-Connects document loaders, text splitters, prompts, models, retrievers, and chains.
+| | Capability |
+|---|---|
+| 📄 | Loads content from a PDF document |
+| ✂️ | Splits document content into smaller text chunks |
+| 🧬 | Generates embeddings for document chunks |
+| 🗄️ | Stores document representations in a Chroma vector store |
+| 🔍 | Retrieves relevant chunks for a question |
+| 🤖 | Uses an Ollama language model to generate a response |
+| 🔄 | Supports repeated question answering in an interactive program |
+| 🧠 | Rewrites follow-up questions using conversation history |
+| 💬 | Demonstrates session-based message history |
 
-PyPDFLoader
-Loads document content from PDF files.
+---
 
-RecursiveCharacterTextSplitter
-Splits the loaded content into smaller text chunks.
+## 🎯 Project Objectives
 
-OllamaEmbeddings
-Generates embeddings for document text using an Ollama embedding model.
+The primary goal is to understand **how individual RAG components work together** and how extra functionality can be layered on top of a basic retrieval pipeline.
 
-Chroma
-Stores vector representations and supports similarity-based retrieval.
+| Objective | Description |
+|:--|:--|
+| 📄 **Document loading** | Read PDF content using a document loader |
+| ✂️ **Text splitting** | Divide documents into smaller chunks for retrieval |
+| 🧬 **Embeddings** | Convert text into vector representations |
+| 🗄️ **Vector storage** | Store and retrieve document representations using Chroma |
+| 🔍 **Retrieval** | Find relevant chunks for a user's question |
+| 🤖 **Answer generation** | Generate responses using retrieved context |
+| 🔄 **Interactive RAG** | Ask multiple questions in one running program |
+| 📝 **Query rewriting** | Rewrite a follow-up question using previous conversation messages |
+| 💬 **Session history** | Maintain separate in-memory message histories by session ID |
 
-ChatOllama
-Connects the application to chat models served through Ollama.
+---
 
-ChatPromptTemplate
-Defines prompts for answering questions and rewriting queries.
+## 🧰 Technologies Used
 
-StrOutputParser
-Converts model output into a string representation.
+<div align="center">
 
-MessagesPlaceholder
-Provides a place for conversation messages inside a chat prompt.
+<img src="https://skillicons.dev/icons?i=python,git,github,vscode,windows&theme=dark" alt="Tech icons" />
 
-InMemoryChatMessageHistory
-Stores chat messages in memory for a conversation session.
+</div>
 
-RunnableWithMessageHistory
-Wraps a runnable chain with session-based message-history handling in the current implementation.
+<br/>
 
-🤖 Models used
-The code includes the following model names:
+| Technology | Purpose in this project |
+|:--|:--|
+| 🐍 **Python** | Implements application logic and connects the RAG components |
+| 🦜 **LangChain** | Connects loaders, splitters, prompts, models, retrievers, and chains |
+| 📄 `PyPDFLoader` | Loads document content from PDF files |
+| ✂️ `RecursiveCharacterTextSplitter` | Splits loaded content into smaller chunks |
+| 🧬 `OllamaEmbeddings` | Generates embeddings using an Ollama embedding model |
+| 🗄️ `Chroma` | Stores vectors and supports similarity-based retrieval |
+| 🤖 `ChatOllama` | Connects the app to chat models served through Ollama |
+| 📝 `ChatPromptTemplate` | Defines prompts for answering and query rewriting |
+| 🔤 `StrOutputParser` | Converts model output into a string |
+| 🧩 `MessagesPlaceholder` | Provides a slot for conversation messages inside a chat prompt |
+| 💾 `InMemoryChatMessageHistory` | Stores chat messages in memory for a session |
+| 🔗 `RunnableWithMessageHistory` | Wraps a chain with session-based message-history handling |
 
-nomic-embed-text — used for document embeddings in the RAG implementations.
-qwen2.5-coder:3b — used as a chat model in the RAG implementations.
-gpt-oss:120b-cloud — configured as the chat model in the session-history implementation.
+### 🤖 Models used
 
-Model availability and execution depend on the Ollama environment and the model tags configured in the code.
+| Model | Role |
+|:--|:--|
+| `nomic-embed-text` | Document embeddings in the RAG implementations |
+| `qwen2.5-coder:3b` | Chat model in the RAG implementations |
+| `gpt-oss:120b-cloud` | Chat model in the session-history implementation |
 
-✨ Project Features
-📄 1. PDF-Based Question Answering
-Load a PDF document and ask questions about its contents. The application retrieves relevant chunks and provides them to the language model as context.
-🔍 2. Semantic Retrieval
-Document chunks are converted into embeddings and stored in Chroma. The retriever searches for relevant chunks instead of passing the entire document to the language model for every question.
-🔄 3. Interactive Question Answering
-The interactive implementation uses a loop to accept multiple questions until the user chooses to exit.
-📝 4. Query Rewriting
-The query-rewriting implementation uses previous conversation messages and a new question to generate a standalone question before retrieval.
-💬 5. Session-Based Chat History
-The session-history implementation maintains a separate in-memory message history for each session ID, allowing messages to be associated with a particular conversation.
+> 📝 Model availability and execution depend on your Ollama environment and the model tags configured in the code.
 
-📂 Project Structure
-The recommended organization of the four Python files is:
+---
+
+## ✨ Project Features
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### 📄 1. PDF-Based Q&A
+Load a PDF and ask questions about its contents. Relevant chunks are retrieved and passed to the model as context.
+
+</td>
+<td width="50%" valign="top">
+
+### 🔍 2. Semantic Retrieval
+Chunks are embedded and stored in Chroma. The retriever finds relevant chunks instead of sending the whole document every time.
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### 🔄 3. Interactive Q&A
+A loop accepts multiple questions until the user chooses to exit.
+
+</td>
+<td width="50%" valign="top">
+
+### 📝 4. Query Rewriting
+Previous messages plus a new question produce a standalone question *before* retrieval.
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top">
+
+### 💬 5. Session-Based Chat History
+A separate in-memory history is kept for each session ID, so messages stay tied to their own conversation.
+
+</td>
+</tr>
+</table>
+
+---
+
+## 📂 Project Structure
+
+```text
 RAG/
 │
 ├── projects/
-│ │
-│ ├── basic_rag.py
-│ ├── basic_rag_interactive.py
-│ ├── rag_with_query_rewriting.py
-│ └── session_chat_history.py
+│   ├── basic_rag.py                  # 1️⃣ Basic RAG pipeline
+│   ├── basic_rag_interactive.py      # 2️⃣ Interactive question loop
+│   ├── rag_with_query_rewriting.py   # 3️⃣ History-aware query rewriting
+│   └── session_chat_history.py       # 4️⃣ Session-based chat history
 │
 ├── README.md
 └── requirements.txt
+```
 
-Note: The Python filenames above are the recommended names for the four existing programs. Rename the files accordingly if you have not already done so. Keep README.md and requirements.txt in the repository root if that matches your actual repository layout.
+> 📌 **Note:** The filenames above are the recommended names for the four existing programs. Rename your files accordingly if you haven't already, and keep `README.md` and `requirements.txt` in the repository root if that matches your layout.
 
-📁 File descriptions
+### 📁 File descriptions
 
-File
-Purpose
+| File | Purpose |
+|:--|:--|
+| `basic_rag.py` | Basic PDF-based RAG pipeline for answering a question |
+| `basic_rag_interactive.py` | Basic implementation plus an interactive question loop |
+| `rag_with_query_rewriting.py` | Uses conversation history to rewrite a question before retrieval |
+| `session_chat_history.py` | Demonstrates session-based chat history with in-memory storage |
+| `README.md` | Project documentation |
+| `requirements.txt` | Python dependencies |
 
-basic_rag.py
-Implements a basic PDF-based RAG pipeline for answering a question.
+---
 
-basic_rag_interactive.py
-Extends the basic implementation with an interactive question loop.
+## 🏗️ Project Architecture
 
-rag_with_query_rewriting.py
-Uses conversation history to rewrite a question before retrieving relevant document chunks.
+### 🔹 Basic RAG workflow
 
-session_chat_history.py
-Demonstrates session-based chat history using in-memory message storage.
-
-README.md
-Documents the project, setup, features, and usage.
-
-requirements.txt
-Lists the Python dependencies required to run the project.
-
-🏗️ Project Architecture
-🔹 Basic RAG workflow
+```mermaid
 flowchart TD
-A["📄 PDF Document"] --> B["PyPDFLoader"]
-B --> C["✂️ Text Splitter"]
-C --> D["🧬 Ollama Embeddings"]
-D --> E["🗄️ Chroma Vector Store"]
-F["❓ User Question"] --> G["🔍 Retriever"]
-E --> G
-G --> H["📚 Retrieved Context"]
-H --> I["📝 Prompt Template"]
-F --> I
-I --> J["🤖 ChatOllama"]
-J --> K["💬 Generated Answer"]
+    A["📄 PDF Document"] --> B["PyPDFLoader"]
+    B --> C["✂️ Text Splitter"]
+    C --> D["🧬 Ollama Embeddings"]
+    D --> E["🗄️ Chroma Vector Store"]
+    F["❓ User Question"] --> G["🔍 Retriever"]
+    E --> G
+    G --> H["📚 Retrieved Context"]
+    H --> I["📝 Prompt Template"]
+    F --> I
+    I --> J["🤖 ChatOllama"]
+    J --> K["💬 Generated Answer"]
 
     classDef input fill:#dbeafe,stroke:#2563eb,color:#111827
     classDef process fill:#dcfce7,stroke:#16a34a,color:#111827
@@ -193,20 +242,23 @@ J --> K["💬 Generated Answer"]
     class A,F input
     class B,C,D,E,G,H,I,J process
     class K output
+```
 
-🔹 Query rewriting workflow
+### 🔹 Query rewriting workflow
+
+```mermaid
 flowchart TD
-A["💬 Previous Conversation Messages"] --> C["📝 Query Rewriting Prompt"]
-B["❓ New User Question"] --> C
-C --> D["🤖 Chat Model"]
-D --> E["🔄 Standalone Question"]
-E --> F["🔍 Retriever"]
-G["🗄️ Chroma Vector Store"] --> F
-F --> H["📚 Retrieved Context"]
-E --> I["📝 Answer Prompt"]
-H --> I
-I --> J["🤖 Chat Model"]
-J --> K["💬 Final Answer"]
+    A["💬 Previous Conversation Messages"] --> C["📝 Query Rewriting Prompt"]
+    B["❓ New User Question"] --> C
+    C --> D["🤖 Chat Model"]
+    D --> E["🔄 Standalone Question"]
+    E --> F["🔍 Retriever"]
+    G["🗄️ Chroma Vector Store"] --> F
+    F --> H["📚 Retrieved Context"]
+    E --> I["📝 Answer Prompt"]
+    H --> I
+    I --> J["🤖 Chat Model"]
+    J --> K["💬 Final Answer"]
 
     classDef input fill:#dbeafe,stroke:#2563eb,color:#111827
     classDef process fill:#dcfce7,stroke:#16a34a,color:#111827
@@ -215,17 +267,21 @@ J --> K["💬 Final Answer"]
     class A,B input
     class C,D,E,F,G,H,I,J process
     class K output
+```
 
-Important distinction: In the query-rewriting implementation, conversation history is used to rewrite the question before retrieval. The final answer prompt receives the standalone question and retrieved context; the entire conversation history is not directly passed into that final answer prompt.
-🔹 Session-history workflow
+> ⚠️ **Important distinction:** In the query-rewriting implementation, conversation history is used to rewrite the question **before retrieval**. The final answer prompt receives the standalone question and retrieved context — the entire conversation history is **not** passed directly into that final prompt.
+
+### 🔹 Session-history workflow
+
+```mermaid
 flowchart TD
-A["👤 User"] --> B["🆔 Session ID"]
-B --> C["📚 Retrieve or Create Session History"]
-C --> D["📝 Chat Prompt + History + New Question"]
-D --> E["🤖 Chat Model"]
-E --> F["💬 Response"]
-F --> G["💾 Update In-Memory History"]
-G --> H["🔁 Continue Conversation"]
+    A["👤 User"] --> B["🆔 Session ID"]
+    B --> C["📚 Retrieve or Create Session History"]
+    C --> D["📝 Chat Prompt + History + New Question"]
+    D --> E["🤖 Chat Model"]
+    E --> F["💬 Response"]
+    F --> G["💾 Update In-Memory History"]
+    G --> H["🔁 Continue Conversation"]
 
     classDef input fill:#dbeafe,stroke:#2563eb,color:#111827
     classDef process fill:#dcfce7,stroke:#16a34a,color:#111827
@@ -234,180 +290,231 @@ G --> H["🔁 Continue Conversation"]
     class A,B input
     class C,D,E,G,H process
     class F output
+```
 
-The session-history program stores conversation messages in memory. It does not implement permanent database-backed conversation storage.
+> 💾 The session-history program stores messages **in memory only**. It does not implement permanent, database-backed conversation storage.
 
-🧩 The Four Implementations
-1️⃣ Basic RAG — basic_rag.py
-Purpose: Understand the fundamental Retrieval-Augmented Generation workflow.
-The program loads a PDF, splits its content into chunks, creates embeddings, stores them in Chroma, retrieves relevant chunks, and passes the retrieved context to a chat model.
-Workflow:
+---
 
-Load the PDF with PyPDFLoader.
-Split its content with RecursiveCharacterTextSplitter.
-Generate embeddings using OllamaEmbeddings.
-Add the document chunks to Chroma.
-Retrieve the most relevant chunks for a question.
-Combine the retrieved text into a context.
-Pass the context and question to the prompt template.
-Generate and display the answer using ChatOllama.
+## 🧩 The Four Implementations
 
-Current configuration in the code:
+<div align="center">
 
-Chunk size: 200
-Chunk overlap: 20
-Number of retrieved chunks (k): 3
-Embedding model: nomic-embed-text
-Chat model: qwen2.5-coder:3b
+| Level | File | Adds |
+|:-:|:--|:--|
+| 1️⃣ | `basic_rag.py` | Core RAG pipeline |
+| 2️⃣ | `basic_rag_interactive.py` | Question loop |
+| 3️⃣ | `rag_with_query_rewriting.py` | History-aware retrieval |
+| 4️⃣ | `session_chat_history.py` | Per-session memory |
 
-These values describe the current implementation and can be changed in the Python file.
-2️⃣ Interactive RAG — basic_rag_interactive.py
-Purpose: Ask multiple questions without restarting the application after every question.
+</div>
+
+<details>
+<summary><h3>1️⃣ Basic RAG — <code>basic_rag.py</code></h3></summary>
+
+**🎯 Purpose:** Understand the fundamental Retrieval-Augmented Generation workflow.
+
+The program loads a PDF, splits it into chunks, creates embeddings, stores them in Chroma, retrieves relevant chunks, and passes the retrieved context to a chat model.
+
+**Workflow**
+
+1. Load the PDF with `PyPDFLoader`
+2. Split content with `RecursiveCharacterTextSplitter`
+3. Generate embeddings using `OllamaEmbeddings`
+4. Add the document chunks to Chroma
+5. Retrieve the most relevant chunks for a question
+6. Combine the retrieved text into a context
+7. Pass the context and question to the prompt template
+8. Generate and display the answer using `ChatOllama`
+
+**⚙️ Current configuration**
+
+| Setting | Value |
+|:--|:--|
+| Chunk size | `200` |
+| Chunk overlap | `20` |
+| Retrieved chunks (`k`) | `3` |
+| Embedding model | `nomic-embed-text` |
+| Chat model | `qwen2.5-coder:3b` |
+
+> These values describe the current implementation and can be changed in the Python file.
+
+</details>
+
+<details>
+<summary><h3>2️⃣ Interactive RAG — <code>basic_rag_interactive.py</code></h3></summary>
+
+**🎯 Purpose:** Ask multiple questions without restarting the app after every question.
+
 This implementation adds a loop around the RAG question-answering process.
-Workflow:
 
-Initialize the PDF retrieval pipeline.
-Display the available menu options.
-Accept a question from the user.
-Retrieve relevant chunks.
-Generate an answer using the model.
-Continue accepting questions until the user selects the exit option.
+**Workflow**
 
-What it demonstrates:
+1. Initialize the PDF retrieval pipeline
+2. Display the available menu options
+3. Accept a question from the user
+4. Retrieve relevant chunks
+5. Generate an answer using the model
+6. Continue accepting questions until the user selects exit
 
-Python while loops.
-User input handling.
-Repeated retrieval and answer generation.
-Basic command-line interaction.
+**What it demonstrates**
 
-The current implementation does not automatically make the previous questions part of the next question's context.
-3️⃣ RAG with Query Rewriting — rag_with_query_rewriting.py
-Purpose: Improve retrieval for follow-up questions that depend on previous conversation messages.
-A follow-up question can be difficult to retrieve against a document when it contains references such as “What about its advantages?” or “Explain that in more detail.”
-Query rewriting uses the previous messages and the new question to create a more self-contained question before retrieval.
-Workflow:
+- 🔁 Python `while` loops
+- ⌨️ User input handling
+- 🔍 Repeated retrieval and answer generation
+- 🖥️ Basic command-line interaction
 
-Maintain a list of conversation messages.
-Receive a new user question.
-Pass the previous messages and the new question to a rewriting prompt.
-Generate a standalone question.
-Retrieve document chunks using the rewritten question.
-Pass the retrieved context and standalone question to the answer prompt.
-Generate the answer.
-Append the new question and answer to the conversation history.
+> ⚠️ The current implementation does **not** automatically make previous questions part of the next question's context.
 
-What it demonstrates:
+</details>
 
-Conversation-aware question rewriting.
-Using history to improve the retrieval query.
-Separating query rewriting from answer generation.
-Maintaining a simple conversation history with Python data structures.
+<details>
+<summary><h3>3️⃣ RAG with Query Rewriting — <code>rag_with_query_rewriting.py</code></h3></summary>
 
-Current limitation: The conversation history is a Python list of tuples and exists only while the program is running. This implementation does not use the session-history wrapper from the fourth program.
-4️⃣ Session-Based Chat History — session_chat_history.py
-Purpose: Understand how a chat chain can load and update message history for a specific session.
-This program uses InMemoryChatMessageHistory and RunnableWithMessageHistory to associate conversation messages with a session ID.
-Workflow:
+**🎯 Purpose:** Improve retrieval for follow-up questions that depend on earlier messages.
 
-Receive a session ID.
-Check whether a history object already exists for that session.
-Create an in-memory history object if the session is new.
-Invoke the chat chain with the user's question and session configuration.
-Load the appropriate message history.
-Generate the response.
-Update the history with the conversation messages.
-Allow the user to continue the session or open another session.
+A follow-up like *"What about its advantages?"* or *"Explain that in more detail."* is hard to retrieve against a document because it depends on context. Query rewriting uses previous messages and the new question to create a **self-contained question** before retrieval.
 
-Important components:
+**Workflow**
 
-Component
-Role
+1. Maintain a list of conversation messages
+2. Receive a new user question
+3. Pass previous messages and the new question to a rewriting prompt
+4. Generate a standalone question
+5. Retrieve document chunks using the rewritten question
+6. Pass the retrieved context and standalone question to the answer prompt
+7. Generate the answer
+8. Append the new question and answer to the conversation history
 
-InMemoryChatMessageHistory
-Holds messages in RAM.
+**What it demonstrates**
 
-RunnableWithMessageHistory
-Connects the chain to session-specific message history.
+- 🔄 Conversation-aware question rewriting
+- 🧭 Using history to improve the retrieval query
+- 🧱 Separating query rewriting from answer generation
+- 📋 Maintaining a simple history with Python data structures
 
-MessagesPlaceholder
-Inserts existing messages into the chat prompt.
+> ⚠️ **Current limitation:** History is a Python list of tuples that exists only while the program runs. This implementation does not use the session-history wrapper from the fourth program.
 
-session_id
-Identifies the conversation whose history should be used.
+</details>
 
-history_messages_key="history"
-Matches the history key used by the prompt placeholder.
+<details>
+<summary><h3>4️⃣ Session-Based Chat History — <code>session_chat_history.py</code></h3></summary>
 
-input_messages_key="question"
-Identifies the input question in the chain's input dictionary.
+**🎯 Purpose:** Understand how a chat chain can load and update message history for a specific session.
 
-Current limitation: Session histories are not saved permanently. They disappear when the Python process terminates. The current code also uses LangChain APIs that may emit deprecation warnings in newer installed versions.
+This program uses `InMemoryChatMessageHistory` and `RunnableWithMessageHistory` to associate messages with a session ID.
 
-⚙️ Installation and Setup
-Prerequisites
-Before running the programs, make sure you have:
+**Workflow**
 
-Python installed.
-Ollama installed and running.
-The embedding and chat models required by the selected script available in your Ollama environment.
-The PDF document you want to process.
-The Python dependencies installed in your environment.
+1. Receive a session ID
+2. Check whether a history object already exists for that session
+3. Create an in-memory history object if the session is new
+4. Invoke the chat chain with the question and session configuration
+5. Load the appropriate message history
+6. Generate the response
+7. Update the history with the conversation messages
+8. Let the user continue the session or open another one
 
-Step 1: Clone the repository
-Replace the URL below with your actual GitHub repository URL.
+**🔑 Important components**
+
+| Component | Role |
+|:--|:--|
+| `InMemoryChatMessageHistory` | Holds messages in RAM |
+| `RunnableWithMessageHistory` | Connects the chain to session-specific history |
+| `MessagesPlaceholder` | Inserts existing messages into the chat prompt |
+| `session_id` | Identifies which conversation's history to use |
+| `history_messages_key="history"` | Matches the history key used by the prompt placeholder |
+| `input_messages_key="question"` | Identifies the input question in the chain's input dictionary |
+
+> ⚠️ **Current limitation:** Session histories are not saved permanently — they disappear when the Python process ends. The code also uses LangChain APIs that may emit deprecation warnings in newer versions.
+
+</details>
+
+---
+
+## ⚙️ Installation and Setup
+
+### ✅ Prerequisites
+
+- 🐍 Python installed
+- 🦙 [Ollama](https://ollama.com) installed and running
+- 🤖 The embedding and chat models required by the script you want to run
+- 📄 A PDF document to process
+- 📦 The Python dependencies installed in your environment
+
+### Step 1 — Clone the repository
+
+```bash
 git clone <YOUR_GITHUB_REPOSITORY_URL>
-
-Navigate to the project directory:
 cd <YOUR_PROJECT_DIRECTORY>
+```
 
-Step 2: Create a virtual environment (recommended)
+### Step 2 — Create a virtual environment *(recommended)*
+
+```bash
 python -m venv .venv
+```
 
-Activate it on Windows Command Prompt:
+Activate it:
+
+```bash
+# Windows Command Prompt
 .venv\Scripts\activate
 
-For Windows PowerShell:
+# Windows PowerShell
 .\.venv\Scripts\Activate.ps1
+```
 
-Step 3: Install the dependencies
-If the repository contains a correctly prepared requirements.txt, run:
+### Step 3 — Install the dependencies
+
+```bash
 python -m pip install -r requirements.txt
+```
 
-Make sure the file lists the packages imported by your actual code. Do not add unrelated dependencies.
-Step 4: Prepare the PDF
-The RAG scripts currently rely on a PDF file path supplied in the code.
-Update the path to the location of your own PDF document before running the program.
-For example:
+> 📌 Make sure `requirements.txt` lists the packages your code actually imports. Don't add unrelated dependencies.
+
+### Step 4 — Prepare the PDF
+
+The RAG scripts rely on a PDF path set in the code. Update it to point to your own document:
+
+```python
 pdf_path = r"C:\path\to\your\document.pdf"
+```
 
-Use the variable name that already exists in the relevant script.
-Step 5: Prepare the Ollama models
-The code uses Ollama for embeddings and chat generation. Ensure that the required models and model tags are available in your environment.
-For example, the embedding model referenced by the RAG programs is:
+> Use the variable name that already exists in the relevant script.
+
+### Step 5 — Prepare the Ollama models
+
+```bash
 ollama pull nomic-embed-text
+```
 
-The chat models and their availability depend on the model tags used by the individual scripts. Verify those tags in your code and Ollama environment before running the programs.
+The chat models depend on the tags used in each script. Verify them in your code and Ollama environment before running.
 
-▶️ How to Run
+---
+
+## ▶️ How to Run
+
 Run the Python files from the directory that contains them.
-Run the basic RAG program
-python basic_rag.py
 
-Run the interactive RAG program
-python basic_rag_interactive.py
+| Program | Command |
+|:--|:--|
+| 1️⃣ Basic RAG | `python basic_rag.py` |
+| 2️⃣ Interactive RAG | `python basic_rag_interactive.py` |
+| 3️⃣ Query rewriting | `python rag_with_query_rewriting.py` |
+| 4️⃣ Session history | `python session_chat_history.py` |
 
-Run RAG with query rewriting
-python rag_with_query_rewriting.py
+> If your files haven't been renamed, use their actual current filenames.
 
-Run the session-history program
-python session_chat_history.py
+---
 
-If your files have not been renamed, use their actual current filenames instead.
+## 💬 Example Interaction
 
-💬 Example Interaction
-The following is an illustrative example of how a document-based RAG application can behave. The answer will depend on the PDF content and the model's response.
+> The following is **illustrative**. Real answers depend on your PDF content and the model.
+
+```text
 ========================================
-📚 PDF QUESTION ANSWERING
+       📚 PDF QUESTION ANSWERING
 ========================================
 
 Enter your question:
@@ -422,83 +529,121 @@ Machine learning is a field of artificial intelligence
 that enables systems to learn patterns from data.
 
 ========================================
+```
 
-For the query-rewriting implementation, a conversation could look like this:
+**Query-rewriting conversation**
+
+```text
 User: What is machine learning?
-
-Assistant: [Answer based on the retrieved PDF content]
+A:    [Answer based on the retrieved PDF content]
 
 User: What are its applications?
 
-Query rewriting:
-"What are the applications of machine learning?"
+🔄 Query rewriting:
+   "What are the applications of machine learning?"
 
-Retriever:
-Searches for relevant document chunks using the rewritten question.
+🔍 Retriever:
+   Searches for relevant chunks using the rewritten question.
 
-Assistant:
-[Answer based on the retrieved PDF content]
+A:    [Answer based on the retrieved PDF content]
+```
 
-The output shown above is illustrative, not a claim that every PDF will produce those exact answers.
+---
 
-🧠 Understanding the Concepts
-What is RAG?
-Retrieval-Augmented Generation combines information retrieval with language-model generation.
-Instead of asking the language model to answer using only its existing knowledge, the application retrieves relevant information from a supplied document and includes it in the prompt.
-What are embeddings?
-Embeddings are numerical representations of text. They allow text chunks and user questions to be compared in vector space to identify relevant content.
-What is a vector store?
-A vector store holds vector representations and associated information. In this project, Chroma is used to store document representations and retrieve relevant chunks.
-What is a retriever?
-A retriever searches for relevant document chunks in response to a query. The basic RAG implementations configure the retriever to return three chunks.
-What is query rewriting?
-Query rewriting converts a new question into a more self-contained question, using earlier conversation messages when available. The rewritten question is then used for retrieval.
-What is session-based chat history?
-Session-based chat history associates messages with a particular conversation session. The session ID identifies which history should be loaded for the next interaction.
-In the current implementation, this history is held in memory rather than stored permanently.
+## 🧠 Understanding the Concepts
 
-⚠️ Current Limitations
-This section describes the limitations of the existing implementations rather than claiming features that have not yet been built.
+<details>
+<summary><b>🔎 What is RAG?</b></summary>
+<br/>
 
-PDF path configuration: The RAG scripts require a valid PDF path in the code.
-Document scope: The RAG implementations work with the PDF documents loaded by the scripts.
-In-memory history: The query-rewriting and session-history implementations do not provide permanent conversation storage.
-Session persistence: Session histories disappear when the session-history Python process terminates.
-Query rewriting: Rewriting a question does not guarantee that the rewritten question will always improve retrieval.
-Model availability: Execution depends on the models and model tags configured in the Ollama environment.
-Deprecation warnings: The session-history implementation uses LangChain components that may be deprecated in newer versions. Check the installed version's documentation before upgrading.
-Error handling: The current programs should not be assumed to handle every invalid path, model failure, or retrieval error.
-Interactive RAG: Repeated question input does not, by itself, provide conversational memory.
+Retrieval-Augmented Generation combines **information retrieval** with **language-model generation**. Instead of answering only from its existing knowledge, the application retrieves relevant information from a supplied document and includes it in the prompt.
 
-🔮 Future Improvements
-The following are possible future improvements, not features claimed to be implemented in this repository.
+</details>
 
-[ ] Improve error handling for missing PDF files and model failures.
-[ ] Move repeated initialization outside the interactive question loop.
-[ ] Make file paths configurable rather than hardcoded.
-[ ] Review LangChain deprecation warnings and update the session-history implementation.
-[ ] Add persistent storage for conversation history.
-[ ] Add tests for document loading, retrieval, and question answering.
-[ ] Compare retrieval results with different chunk sizes and retrieval settings.
-[ ] Add clear logging for retrieval and model execution.
+<details>
+<summary><b>🧬 What are embeddings?</b></summary>
+<br/>
 
-These improvements can be introduced incrementally as the project evolves.
+Embeddings are numerical representations of text. They let chunks and user questions be compared in vector space to find relevant content.
 
-👨‍💻 Author
-Harsha Vardhan Patnaik
-This repository documents hands-on learning and implementation of RAG concepts using Python, LangChain, Chroma, and Ollama.
-The focus is on understanding how the components work together by implementing the code and experimenting with progressively more advanced RAG-related concepts.
+</details>
 
-⭐ Project Summary
-Four Python programs. One learning journey.
-📄 Basic RAG
-↓
-🔄 Interactive RAG
-↓
-📝 RAG with Query Rewriting
-↓
-💬 Session-Based Chat History
+<details>
+<summary><b>🗄️ What is a vector store?</b></summary>
+<br/>
 
-The project demonstrates the progression from document-based question answering to query rewriting and session-specific conversational history.
+A vector store holds vector representations plus associated information. This project uses **Chroma** to store document representations and retrieve relevant chunks.
 
-🚀 Learning by building, testing, and improving.
+</details>
+
+<details>
+<summary><b>🔍 What is a retriever?</b></summary>
+<br/>
+
+A retriever searches for relevant document chunks in response to a query. The basic RAG implementations configure it to return **three** chunks.
+
+</details>
+
+<details>
+<summary><b>📝 What is query rewriting?</b></summary>
+<br/>
+
+Query rewriting converts a new question into a more self-contained one, using earlier messages when available. The rewritten question is then used for retrieval.
+
+</details>
+
+<details>
+<summary><b>💬 What is session-based chat history?</b></summary>
+<br/>
+
+It associates messages with a particular conversation session. The session ID identifies which history is loaded for the next interaction. In this project it is held **in memory**, not stored permanently.
+
+</details>
+
+---
+
+## ⚠️ Current Limitations
+
+This section describes the limitations of the **existing** implementations rather than claiming features that haven't been built.
+
+- 📄 **PDF path configuration:** The RAG scripts require a valid PDF path in the code.
+- 📚 **Document scope:** The RAG implementations work only with the PDF documents loaded by the scripts.
+- 🧠 **No shared memory in interactive RAG:** Previous questions aren't carried into the next question's context.
+- 💾 **No persistence:** Chat histories live in memory and are lost when the program ends.
+- ⚠️ **Deprecation warnings:** Some LangChain APIs used may warn in newer versions.
+
+---
+
+## 🔮 Future Improvements
+
+- [ ] 📁 Accept the PDF path via command-line argument or file picker
+- [ ] 🗂️ Support multiple documents and other file types
+- [ ] 💾 Persist chat history (SQLite or another database)
+- [ ] 🔗 Combine query rewriting with session-based history in one program
+- [ ] 📌 Show source page numbers alongside answers
+- [ ] 🖥️ Add a simple web UI (Streamlit or Gradio)
+- [ ] 🧪 Add basic tests and evaluation of retrieval quality
+- [ ] 🔄 Update code to the latest LangChain APIs
+
+---
+
+## 👨‍💻 Author
+
+<div align="center">
+
+**Harsha**
+
+<a href="https://github.com/YOUR_USERNAME">
+  <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
+</a>
+<a href="https://www.linkedin.com/in/YOUR_LINKEDIN">
+  <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+</a>
+
+<br/><br/>
+
+⭐ **If you found this project helpful, consider giving it a star!** ⭐
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,14,18,24&height=120&section=footer" alt="Footer" width="100%" />
+
+</div>
